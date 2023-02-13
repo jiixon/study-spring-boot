@@ -1,0 +1,20 @@
+package com.gachon.board.service;
+
+import com.gachon.board.entity.PostEntity;
+import com.gachon.board.repository.PostRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@RequiredArgsConstructor
+@Service
+public class ListService {
+    private final PostRepository postRepository;
+
+    public List<PostEntity> findPostList(){
+        List<PostEntity> all = postRepository.findAll();
+
+        return all;
+    }
+}
