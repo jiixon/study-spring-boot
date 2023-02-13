@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Board</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+    .board-write {
+      width: 1000px;
+      margin: 100px auto;
+    }
+    .form-group {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #000;
+
+    }
+    .bt_wrap > button {
+      width: 10%;
+      display: inline-block;
+      padding: 10px;
+      border-radius: 2px;
+
+    }
+    .form-group > input {
+      width: 80%;
+      height: 30px;
+      padding: 5px;
+    }
+
+    .form-group > textarea {
+      display: block;
+      width: 100%;
+      height: 300px;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+  </style>
+
+</head>
+<body>
+<div>
+  <nav class="board-navbar">
+    <h1 style="margin: 0; font-size: 30px; text-align: center">BOARD</h1>
+    <form role="search" method="get" action="/search">
+      <div>
+        <input name="keyword" type="text" placeholder="Search" style="color: black">
+      </div>
+      <button>Search</button>
+    </form>
+
+    <div style="float: right">
+      <span id="login-user">사용자</span>님, 안녕하세요
+      <a href="" role="button" class="logout-btn">Logout</a>
+    </div>
+  </nav>
+
+</div>
+<div class="board-write">
+  <h1>게시판등록</h1><br>
+  <form action="/post" method="post" enctype="application/json">
+    <div class="form-group" style="border-top: 2px solid #000">
+      <label for="title">제목</label>
+      <input class="form-control" type="text" id="title" name="title" placeholder="제목을 작성해주세요">
+    </div>
+
+    <div class="form-group">
+      <label for="contents">내용</label>
+      <textarea class="form-control" id="contents" name="contents" rows="10"></textarea>
+    </div>
+
+    <div class="bt_wrap" style="margin-top: 30px; font-size: 20px">
+      <button style="background-color: #cdab96; color: white" type="submit">등록</button>
+      <button type="button" onclick="location.href='/'">목록</button>
+    </div>
+
+
+  </form>
+
+</div>
+</body>
+
+</html>

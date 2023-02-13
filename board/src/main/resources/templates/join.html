@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Join</title>
+    <!— 합쳐지고 최소화된 최신 CSS —>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!— 부가적인 테마 —>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!— 합쳐지고 최소화된 최신 자바스크립트 —>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!--CSS-->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .form-input > input{
+            height: 45px;
+            width: 100%;
+            border: 2px solid rgba(194,194,190,0.57);
+        }
+        .form-signin {
+            margin: auto;
+            width: 600px;
+        }
+        .form-join > button {
+            width: 49%;
+        }
+    </style>
+</head>
+<body>
+<div class="form-signin">
+    <h1 style="font-size: 30px; font-weight: bold; text-align: center" >Sign-UP</h1>
+    <form>
+        <div class="form-input">
+            <label>User Name</label>
+            <input type="text" name="name" placeholder="이름을 입력하세요">
+        </div>
+
+        <div class="form-input">
+            <label>ID</label>
+            <input type="email" name="email" placeholder="이메일을 입력하세요">
+        </div>
+        <div class="form-input">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="비밀번호 입력하세요">
+        </div><br>
+
+        <div class="form-join">
+            <button style="background: #67564d;" type="submit">가입</button>
+            <button style="color: black;">취소</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

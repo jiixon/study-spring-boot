@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+
+  <!— 합쳐지고 최소화된 최신 CSS —>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <!— 부가적인 테마 —>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <!— 합쳐지고 최소화된 최신 자바스크립트 —>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+  <!--CSS-->
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .signin-btn {
+      background: #cdab96;
+      font-size: 20px;
+      color: white;
+      width: 43%;
+      height: 40px;
+      border-color: rgba(210,175,155,0.8);
+      border-radius: 6px;
+      text-align: center;
+      padding: 0 10px;
+      box-sizing: border-box;
+      margin-left: 5px;
+      margin-bottom: 13px;
+    }
+  </style>
+</head>
+
+<body class="text-center">
+<div class="form-signin">
+  <h1 style="font-size: 30px; font-weight: bold">Sign-IN</h1>
+  <form action="" id="login-form">
+
+    <div class="form-input">
+      <label for="login-id">Email address</label>
+      <input type="email" class="form-control" id="login-id" placeholder="name@example.com">
+    </div>
+
+    <div class="form-input">
+      <label for="login-pw">Password</label>
+      <input type="password" class="form-control" id="login-pw" placeholder="Password">
+    </div>
+
+    <label for="remember-me">
+      <input type="checkbox" id="remember-me"> Remember me
+    </label>
+
+    <button class="signin-btn" type="submit" value="sign-in">SIGN IN</button>
+
+    <div class="form-join">
+      <button style="background: #67564d;" type="submit">Goole Login</button>
+      <button style="color: black;" type="submit">Go To Join</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

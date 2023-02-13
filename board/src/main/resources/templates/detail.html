@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Board</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+        .board-write {
+            width: 1000px;
+            margin: 100px auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #000;
+
+        }
+        .bt_wrap > button {
+            width: 7%;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 2px;
+
+        }
+        .form-group > input {
+            width: 80%;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .form-group > textarea {
+            display: block;
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .form-group-comment {
+            width: 700px;
+            height: 50px;
+            margin: auto;
+        }
+        .form-group-comment .comment-text {
+            width:560px;
+            height: 30px;
+            border-radius: 3px;
+            background: #F8F8F8;
+            outline: none;
+        }
+        .form-group-comment .comment-btn {
+            width: 100px;
+            height: 30px;
+            border-radius: 3px;
+        }
+        .form-group .like-cnt {
+            text-align: right;
+            margin-right: 50px;
+            float: right;
+            margin-top: 8px;
+        }
+        .form-group-comment .bt_wrap_comm > button {
+            width: 50px;
+            height: 30px;
+            border-radius: 3px;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <nav class="board-navbar">
+        <h1 style="margin: 0; font-size: 30px; text-align: center">BOARD</h1>
+        <form role="search" method="get" action="/search">
+            <div>
+                <input name="keyword" type="text" placeholder="Search" style="color: black">
+            </div>
+            <button>Search</button>
+        </form>
+
+        <div style="float: right">
+            <span id="login-user">사용자</span>님, 안녕하세요
+            <a href="" role="button" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+</div>
+<div class="board-write">
+    <h2>게시판수정</h2><br>
+    <form>
+        <div class="form-group" style="border-top: 2px solid #000;">
+            <label for="title" >제목</label>
+            <input class="form-control" type="text" id="title" name="title" placeholder="제목을 작성해주세요">
+            <div class="like-cnt">좋아요 0</div>
+        </div>
+
+        <div class="form-group">
+            <label for="contents">내용</label>
+            <textarea class="form-control" id="contents" name="contents" rows="10"></textarea>
+        </div>
+
+        <div class="bt_wrap" style="margin-top: 30px; font-size: 20px">
+            <button style="background-color: rgba(56,44,17,0.57); color: white" type="button">좋아요</button>
+            <button style="background-color: #cdab96; color: white" type="button">글수정</button>
+            <button style="background-color: #67564d; color: white" type="button">글삭제</button>
+            <button type="button" onclick="location.href='/'">목록</button>
+        </div>
+        <br><br><br>
+
+        <!--comments-->
+        <div class="form-group-comment">
+            <h3>Comment</h3>
+            <form>
+                <input name="comment" class="comment-text">
+                <button style="background-color: #67564d; color: white" type="submit" class="comment-btn">답글</button>
+            </form>
+
+            <br><br>
+            <div class="bt_wrap_comm">
+                <button type="button">수정</button>
+                <button type="button">삭제</button>
+            </div>
+
+        </div>
+
+
+
+    </form>
+
+</div>
+</body>
+
+</html>

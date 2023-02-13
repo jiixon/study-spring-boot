@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Board</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body style="padding-top: 140px;">
+<div class="container">
+    <nav class="board-navbar">
+        <h1 style="margin: 0; font-size: 30px; text-align: center">BOARD</h1>
+        <form role="search" method="get" action="/search">
+            <div>
+                <input name="keyword" type="text" placeholder="Search" style="color: black">
+            </div>
+            <button>Search</button>
+        </form>
+
+        <div style="float: right">
+            <span id="login-user">사용자</span>님, 안녕하세요
+            <a href="" role="button" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <hr>
+    <div class="board-list">
+        <div class="col">
+            <button type="button" onclick="location.href='/post'">작성하기</button>
+        </div>
+        <form>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="num">번호</th>
+                    <th class="title">제목</th>
+                    <th class="writer">작성자</th>
+                    <th class="date">작성날짜</th>
+                </tr>
+                </thead>
+                <tbody> <!--반복문-->
+                <tr  th:each="post : ${postlist}"> <!--postlist: AttributeName, 객체를 꺼내서 post에 담음-->
+                    <!--model안에 있는 값 꺼냄, each:List로 담아둔 모든 회원 목록을 Loop로 돌림-->
+                    <td class="num" th:text="${post.id}"></td> <!--위 post의 getId()로 접근(private하기 때문)  -->
+                    <td class="title" th:text="${post.title}"></td>
+                    <td class="writer" th:text="${post.user}"></td>
+                    <td class="date" th:text="${#temporals.format(post.createPostTime, 'yyyy-MM-dd')}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+
+
+</div> <!-- /container -->
+</body>
+
+</html>
