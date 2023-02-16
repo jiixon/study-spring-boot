@@ -28,11 +28,9 @@ public class PostController {
     private final ListService listService;
 
     @PostMapping("/post")
-    public String savePost(PostDto title){
+    public String savePost(PostDto title){ //?
         log.info("title: {}",title.getTitle());
         postService.savePost(title);
-
-
         return "redirect:/";
     }
 
@@ -45,7 +43,7 @@ public class PostController {
     }
     //json으로 할때 @RequestBody 붙여야함
     @PostMapping("/test")
-    public ResponseEntity<?> test(@RequestBody PostDto postDto){
+    public ResponseEntity<?> test(@RequestBody PostDto postDto){ //?
         log.info("{}",postDto.getTitle());
 
         return new ResponseEntity<>(HttpStatus.OK);

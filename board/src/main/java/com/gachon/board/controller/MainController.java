@@ -28,7 +28,7 @@ public class MainController {
         return "join";
 
     }
-    @GetMapping("/detail")
+    @GetMapping("/list/detail")
     String list_detail(){
         //model.addAttribute("sw", "title");
         return "detail";

@@ -21,10 +21,20 @@ public class PostEntity {
 
     @Column
     private String title;
+
     @Column
     private String contents;
+
+    @ManyToOne
+    @JoinColumn
+    private MemberEntity memberId;
+
     @Column
-    private String user;
+    private Boolean deleteYn;
+
+    @Column
+    private LocalDateTime deletePostTime;
+
     @Column
     private LocalDateTime createPostTime; //Coulmn 이름(CREATE_POST_TIME)
 
