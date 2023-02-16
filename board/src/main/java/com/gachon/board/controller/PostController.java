@@ -27,13 +27,15 @@ public class PostController {
     private final PostService postService;
     private final ListService listService;
 
-    @PostMapping("/post")
-    public String savePost(PostDto title){ //?
-        log.info("title: {}",title.getTitle());
-        postService.savePost(title);
-        return "redirect:/";
-    }
 
+
+//    @PostMapping("/post")
+//    public String savePost(PostDto title){ //?
+//        log.info("title: {}",title.getTitle());
+//        postService.savePost(title);
+//        return "redirect:/";
+//    }
+//
     @GetMapping("/")
     public String showPostList(Model model){
         List<PostEntity> postList = listService.findPostList();//글전체 검색 후 리스트에 저장
@@ -41,12 +43,12 @@ public class PostController {
         return "index";
 
     }
-    //json으로 할때 @RequestBody 붙여야함
-    @PostMapping("/test")
-    public ResponseEntity<?> test(@RequestBody PostDto postDto){ //?
-        log.info("{}",postDto.getTitle());
-
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    //json으로 할때 @RequestBody 붙여야함
+//    @PostMapping("/test")
+//    public ResponseEntity<?> test(@RequestBody PostDto postDto){ //?
+//        log.info("{}",postDto.getTitle());
+//
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
 }
