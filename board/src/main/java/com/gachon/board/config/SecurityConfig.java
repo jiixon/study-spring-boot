@@ -26,7 +26,7 @@ public class SecurityConfig {
 //    }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests().mvcMatchers("/index").permitAll()
+        httpSecurity.authorizeRequests().mvcMatchers("/index","/css/**").permitAll()
                 .anyRequest().hasRole("USER");
         httpSecurity.formLogin().loginPage("/index").loginProcessingUrl("/login").defaultSuccessUrl("/")
                 .and().oauth2Login().loginPage("/loginForm").defaultSuccessUrl("/")
