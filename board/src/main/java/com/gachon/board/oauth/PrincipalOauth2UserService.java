@@ -15,6 +15,9 @@ import java.util.UUID;
 
 @Service
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
+    //DefaultOAuth2UserService를 상속받은 PrincipalOauth2UserService: 구글로그인을 한 후 loadUser가 구글로부터 받은 OAuth2UserRequest를 통해 후처리
+
+
 //    @Autowired
 //    private BCryptPasswordEncoder bCryptPasswordEncoder;
 

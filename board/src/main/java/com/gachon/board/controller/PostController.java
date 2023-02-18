@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,9 +39,14 @@ public class PostController {
 //    }
 //
     @GetMapping("/")
-    public String showPostList(Model model){
+    public String showPostList(Model model, @AuthenticationPrincipal OAuth2User oAuth2User){
+        log.info("{}",oAuth2User.getAttributes());
+        log.info("{}",oAuth2User.getAttribute("name").toString());
+
+        String name = oAuth2User.getAttribute("name").toString();
         List<PostEntity> postList = listService.findPostList();//글전체 검색 후 리스트에 저장
         model.addAttribute("postlist",postList);
+        model.addAttribute("username",name);
         return "index";
 
     }
