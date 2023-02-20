@@ -7,6 +7,6 @@ import lombok.*;
 public class PostDto {
     public String title;
     public String contents;
-    public String email;
+//    public String email;
 
 }

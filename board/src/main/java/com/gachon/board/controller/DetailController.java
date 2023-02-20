@@ -27,14 +27,14 @@ public class DetailController {
         log.info("{}",postId);
         log.info("{}",email);
 
-        if(postByPostId.getMemberId().equals(memberByEmail)){
-            model.addAttribute("isSameUser",true);
-
-        }
-        else {
-            model.addAttribute("isSameUser",false);
-        }
-        model.addAttribute("post",postByPostId);
+//        if(postByPostId.getUserId().equals(memberByEmail)){
+//            model.addAttribute("isSameUser",true);
+//
+//        }
+//        else {
+//            model.addAttribute("isSameUser",false);
+//        }
+//        model.addAttribute("post",postByPostId);
         return "detail";
 
     }

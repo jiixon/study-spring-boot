@@ -27,7 +27,7 @@ public class PostEntity {
 
     @ManyToOne
     @JoinColumn
-    private MemberEntity memberId;
+    private UserEntity userId; //??
 
     @Column
     private Boolean deleteYn;

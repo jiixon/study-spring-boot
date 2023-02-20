@@ -54,7 +54,7 @@
     </form>
 
     <div style="float: right">
-      <span id="login-user">사용자</span>님, 안녕하세요
+      <span id="login-user" th:text="${username}">사용자</span>님, 안녕하세요
       <a href="" role="button" class="logout-btn">Logout</a>
     </div>
   </nav>
@@ -62,7 +62,7 @@
 </div>
 <div class="board-write">
   <h1>게시판등록</h1><br>
-  <form action="/post" method="post" enctype="application/json">
+  <form th:action="@{/save/post}" method="post" enctype="application/json">
     <div class="form-group" style="border-top: 2px solid #000">
       <label for="title">제목</label>
       <input class="form-control" type="text" id="title" name="title" placeholder="제목을 작성해주세요">

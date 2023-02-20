@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -31,14 +32,22 @@ public class PostController {
 
 
 
-//    @PostMapping("/post")
-//    public String savePost(PostDto title){ //?
-//        log.info("title: {}",title.getTitle());
-//        postService.savePost(title);
-//        return "redirect:/";
-//    }
-//
-    @GetMapping("/")
+    @PostMapping("/save/post") // 글 저장
+    public String savePost(PostDto title){
+        log.info("title: {}",title.getTitle());
+
+        postService.savePost(title);
+
+        return "redirect:/";
+    }
+    @GetMapping("/post")
+    public String post(@AuthenticationPrincipal OAuth2User oAuth2User,Model model){
+        String name = oAuth2User.getAttribute("name").toString();
+        model.addAttribute("username",name);
+        return "post";
+    }
+
+    @GetMapping("/") //메인
     public String showPostList(Model model, @AuthenticationPrincipal OAuth2User oAuth2User){
         log.info("{}",oAuth2User.getAttributes());
         log.info("{}",oAuth2User.getAttribute("name").toString());

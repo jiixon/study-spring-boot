@@ -49,7 +49,7 @@ public class SecurityConfig {
 //.loginPage("/loginForm")
 //.defaultSuccessUrl("/")
 //.failureUrl("/loginForm") : 인증 실패했을 경우 이동하는 페이지 설정
-//.userInfoEndpoint(principalOauth2UserService): 로그인후 후처리
+//.userInfoEndpoint(principalOauth2UserService): 로그인후 후처리(괄호 안에 OAuth2UserService들어가야함)
 //return httpSecurity.build()
 
 //mvcMatchers(): mvc 패턴에 대해 접근설정
