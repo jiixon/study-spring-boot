@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NegativeOrZero;
@@ -21,7 +22,7 @@ public class LikePostEntity {
 
     @ManyToOne
     @JoinColumn
-    private MemberEntity memberId;
+    private UserEntity userId;
 
     @ManyToOne
     @JoinColumn

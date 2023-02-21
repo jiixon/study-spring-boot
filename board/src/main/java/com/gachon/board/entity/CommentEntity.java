@@ -26,7 +26,7 @@ public class CommentEntity {
 
     @ManyToOne
     @JoinColumn
-    private MemberEntity memberId;
+    private UserEntity userId;
 
     @Column
     private LocalDateTime createCommentTime;
