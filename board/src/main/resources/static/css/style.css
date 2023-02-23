@@ -6,6 +6,9 @@
 body {
     padding-top: 75px;
 }
+tr a {
+    text-decoration: none;
+}
 .form-signin {
     position: absolute;
     width: 300px;

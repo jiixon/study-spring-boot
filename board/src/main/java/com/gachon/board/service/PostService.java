@@ -6,8 +6,11 @@ import com.gachon.board.entity.PostEntity;
 import com.gachon.board.entity.UserEntity;
 import com.gachon.board.repository.MemberRepository;
 import com.gachon.board.repository.PostRepository;
+import com.gachon.board.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,7 +23,29 @@ public class PostService {
 
     private final PostRepository postRepository;
     private final MemberRepository memberRepository;
-    public void savePost(PostDto postDto){
+    private final UserRepository userRepository;
+    public void savePost(PostDto postDto, String email){
+
+
+
+        PostEntity postEntity = new PostEntity();
+        postEntity.setTitle(postDto.getTitle());
+        postEntity.setContents(postDto.getContents());
+
+        Optional<UserEntity> byEmail = userRepository.findByEmail(email);
+        if(byEmail.isPresent()){
+            postEntity.setUserId(byEmail.get());
+        }else {
+            log.error("가입되지 않는 이메일입니다");
+        }
+
+        //UserId 어케해야할까,,,??
+        postEntity.setDeleteYn(true); //일단은 이렇게,,
+        postEntity.setDeletePostTime(LocalDateTime.now()); //이것도 일단 이렇게,,
+        postEntity.setCreatePostTime(LocalDateTime.now());
+        postRepository.save(postEntity);
+
+
         //Optional<MemberEntity> byEmail = memberRepository.findByEmail(postDto.getEmail());
 //        if(byEmail.isPresent()) {
 //            PostEntity postEntity = new PostEntity();
@@ -39,18 +64,7 @@ public class PostService {
 //        memberRepository.save(build);
 
 
-        UserEntity userEntity = new UserEntity();
 
-
-        PostEntity postEntity = new PostEntity();
-        postEntity.setTitle(postDto.getTitle());
-        postEntity.setContents(postDto.getContents());
-
-        //UserId 어케해야할까,,,??
-        postEntity.setDeleteYn(true); //일단은 이렇게,,
-        postEntity.setDeletePostTime(LocalDateTime.now()); //이것도 일단 이렇게,,
-        postEntity.setCreatePostTime(LocalDateTime.now());
-        postRepository.save(postEntity);
 
     }
 }

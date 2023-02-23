@@ -41,7 +41,7 @@
                 <tr  th:each="post : ${postlist}"> <!--postlist: AttributeName, 객체를 꺼내서 post에 담음-->
                     <!--model안에 있는 값 꺼냄, each:List로 담아둔 모든 회원 목록을 Loop로 돌림-->
                     <td class="num" th:text="${post.id}"></td> <!--위 post의 getId()로 접근(private하기 때문)  -->
-                    <a th:href="@{/detail(postId=${post.id}, email='jr0107380@gmail.com')}"><td class="title" th:text="${post.title}"></td></a>
+                    <td class="title"><a th:text="${post.title}" th:href="@{/detail(postId=${post.id})}"></a></td>
                     <td class="writer" th:text="${username}"></td>
                     <td class="date" th:text="${#temporals.format(post.createPostTime, 'yyyy-MM-dd')}"></td>
                 </tr>
