@@ -26,20 +26,23 @@ public class DetailController {
 
     //post_user정보-user객체 안에있는 email(쓴사람)과 Oatu2user로 가져온 객체의 email(본사람) 같으면 보이게하기
 
-   @GetMapping("/detail")
-    public String dfadfd(Model model, @RequestParam Long postId, @AuthenticationPrincipal OAuth2User oAuth2User) throws Exception {
-        PostEntity postByPostId = detailService.findPostByPostId(postId);
-//        UserEntity userByEmail = userService.findByEmail(email);
-        log.info("{}",postId);
-//        log.info("{}",email);
+   @GetMapping("/detail") //글 상세조회할 때
+    public String detail(Model model, @RequestParam Long postId, @AuthenticationPrincipal OAuth2User oAuth2User) throws Exception {
+       PostEntity postByPostId = detailService.findPostByPostId(postId);
+       String userByEmail = oAuth2User.getAttribute("email").toString();
+       log.info("{}",postId);
+       log.info("{}",userByEmail);
+       log.info("{}",postByPostId);
+       String writerByEmail = postByPostId.getUserId().getEmail();
 
-//        if(postByPostId.getUserId().equals(userByEmail)){
-//            model.addAttribute("isSameUser",true);
-//
-//        }
-//        else {
-//            model.addAttribute("isSameUser",false);
-//        }
+       if(writerByEmail.equals(userByEmail)){ //작성자와 글을 본 사람이 같으면
+            model.addAttribute("isSameUser",true);
+            log.info("true");
+        }
+        else {
+            model.addAttribute("isSameUser",false);
+            log.info("false");
+        }
 
        String name = oAuth2User.getAttribute("name").toString();
        model.addAttribute("username",name);

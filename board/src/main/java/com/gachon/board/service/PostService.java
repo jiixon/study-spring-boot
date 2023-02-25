@@ -26,15 +26,13 @@ public class PostService {
     private final UserRepository userRepository;
     public void savePost(PostDto postDto, String email){
 
-
-
         PostEntity postEntity = new PostEntity();
-        postEntity.setTitle(postDto.getTitle());
-        postEntity.setContents(postDto.getContents());
+        postEntity.setTitle(postDto.getTitle()); //글 제목
+        postEntity.setContents(postDto.getContents()); //글 내용
 
         Optional<UserEntity> byEmail = userRepository.findByEmail(email);
         if(byEmail.isPresent()){
-            postEntity.setUserId(byEmail.get());
+            postEntity.setUserId(byEmail.get()); //글쓴유저 ID저장
         }else {
             log.error("가입되지 않는 이메일입니다");
         }
@@ -42,7 +40,7 @@ public class PostService {
         //UserId 어케해야할까,,,??
         postEntity.setDeleteYn(true); //일단은 이렇게,,
         postEntity.setDeletePostTime(LocalDateTime.now()); //이것도 일단 이렇게,,
-        postEntity.setCreatePostTime(LocalDateTime.now());
+        postEntity.setCreatePostTime(LocalDateTime.now()); //글작성 시간
         postRepository.save(postEntity);
 
 

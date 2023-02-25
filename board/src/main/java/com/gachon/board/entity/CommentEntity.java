@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,9 +19,12 @@ public class CommentEntity {
     @Column
     private Long id;
 
-    @ManyToOne
-    @JoinColumn
-    private PostEntity postId;
+    @Column
+    private String comment;
+
+//    @ManyToOne
+//    @JoinColumn
+//    private PostEntity postId;
 
     @ManyToOne
     @JoinColumn
