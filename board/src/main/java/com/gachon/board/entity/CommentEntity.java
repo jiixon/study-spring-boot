@@ -22,9 +22,9 @@ public class CommentEntity {
     @Column
     private String comment;
 
-//    @ManyToOne
-//    @JoinColumn
-//    private PostEntity postId;
+    @ManyToOne
+    @JoinColumn
+    private PostEntity postId;
 
     @ManyToOne
     @JoinColumn

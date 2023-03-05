@@ -23,7 +23,7 @@ public class CommentService {
 
     public void saveComment(CommentDto commentDto, String email){
 
-//        Optional<PostEntity> postById = postRepository.findById(commentDto.getCommentId());
+        Optional<PostEntity> postById = postRepository.findById(commentDto.getCommentId());
         Optional<UserEntity> userByEmail = userRepository.findByEmail(email);
 
         CommentEntity commentEntity = new CommentEntity();
@@ -36,7 +36,7 @@ public class CommentService {
 
         //postId 글의 id 저장
 
-        //commentEntity.setPostId(postById.get());
+        commentEntity.setPostId(postById.get());
 
 
 
