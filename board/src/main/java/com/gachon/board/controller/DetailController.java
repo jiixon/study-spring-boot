@@ -13,6 +13,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
@@ -24,10 +25,10 @@ public class DetailController {
     private final DetailService detailService;
     private final UserService userService;
 
-    //post_user정보-user객체 안에있는 email(쓴사람)과 Oatu2user로 가져온 객체의 email(본사람) 같으면 보이게하기
+    //post_user정보-user객체 안에있는 email(쓴사람)과 Oauth2user로 가져온 객체의 email(본사람) 같으면 보이게하기
 
    @GetMapping("/detail") //글 상세조회할 때
-    public String detail(Model model, @RequestParam("postId") Long postId, @AuthenticationPrincipal OAuth2User oAuth2User) throws Exception {
+    public String detail(Model model, Long postId, @AuthenticationPrincipal OAuth2User oAuth2User) throws Exception {
        PostEntity postByPostId = detailService.findPostByPostId(postId);
        String userByEmail = oAuth2User.getAttribute("email").toString();
        log.info("{}",postId);
