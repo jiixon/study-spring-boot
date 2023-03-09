@@ -25,12 +25,12 @@ public class CommentService {
 
     public void saveComment(CommentDto commentDto, String email){
 
-        Optional<PostEntity> postById = postRepository.findById(commentDto.postId);
+        Optional<PostEntity> postById = postRepository.findById(commentDto.getPostId());
         Optional<UserEntity> userByEmail = userRepository.findByEmail(email);
 
-//        log.info("userByEmail.get(): {}",userByEmail.get());
-//        log.info("postById: {}",postById);
-//        log.info("postById.get(): {}",postById.get());
+        log.info("userByEmail.get(): {}",userByEmail.get());
+        log.info("postById: {}",postById);
+        log.info("postById.get(): {}",postById.get());
 
         CommentEntity commentEntity = new CommentEntity();
         commentEntity.setComment(commentDto.getComment()); //댓글 내용 저장
