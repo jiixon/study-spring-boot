@@ -10,6 +10,6 @@ import java.util.Optional;
 //<Entity class,해당하는 pk 타입>
 public interface PostRepository extends JpaRepository<PostEntity,Long> {
     List<PostEntity> findAllByTitleContaining(String keyword); //스프링데이터jpa쿼리메소드 규칙
-//    Optional<PostEntity> findById(Long postId);
+    Optional<PostEntity> findById(Long postId);
 
 }

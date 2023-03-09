@@ -27,10 +27,12 @@ public class CommentController {
 
         String email = oAuth2User.getAttribute("email").toString();
 
+
         log.info("email: {}", email);
+        log.info("postId: {}",commentDto.getPostId());
 
         commentService.saveComment(commentDto,email);
-        return "redirect:/detail";
+        return "redirect:/detail?postId="+commentDto.getPostId();
     }
 
 

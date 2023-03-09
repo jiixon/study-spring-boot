@@ -9,6 +9,7 @@ import com.gachon.board.repository.PostRepository;
 import com.gachon.board.repository.UserRepository;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CommentService {
     private final UserRepository userRepository;
     private final PostRepository postRepository;
@@ -23,8 +25,12 @@ public class CommentService {
 
     public void saveComment(CommentDto commentDto, String email){
 
-        //Optional<PostEntity> postById = postRepository.findById(commentDto.getWriterId());
+        Optional<PostEntity> postById = postRepository.findById(commentDto.postId);
         Optional<UserEntity> userByEmail = userRepository.findByEmail(email);
+
+//        log.info("userByEmail.get(): {}",userByEmail.get());
+//        log.info("postById: {}",postById);
+//        log.info("postById.get(): {}",postById.get());
 
         CommentEntity commentEntity = new CommentEntity();
         commentEntity.setComment(commentDto.getComment()); //댓글 내용 저장
@@ -34,7 +40,7 @@ public class CommentService {
         commentEntity.setUserId(userByEmail.get()); //댓글 단 userId저장
 
         //postId 글의 id 저장
-        //commentEntity.setPostId(postById.get());
+        commentEntity.setPostId(postById.get());
 
         commentRepository.save(commentEntity);
 

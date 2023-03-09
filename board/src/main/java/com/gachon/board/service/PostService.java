@@ -22,7 +22,6 @@ import java.util.Optional;
 public class PostService {
 
     private final PostRepository postRepository;
-    private final MemberRepository memberRepository;
     private final UserRepository userRepository;
     public void savePost(PostDto postDto, String email){
 
@@ -42,25 +41,6 @@ public class PostService {
         postEntity.setDeletePostTime(LocalDateTime.now()); //이것도 일단 이렇게,,
         postEntity.setCreatePostTime(LocalDateTime.now()); //글작성 시간
         postRepository.save(postEntity);
-
-
-        //Optional<MemberEntity> byEmail = memberRepository.findByEmail(postDto.getEmail());
-//        if(byEmail.isPresent()) {
-//            PostEntity postEntity = new PostEntity();
-//            postEntity.setTitle(postDto.getTitle());
-//            postEntity.setContents(postDto.getContents());
-//            postEntity.setMemberId(byEmail.get());
-//            postEntity.setCreatePostTime(LocalDateTime.now());
-//            postRepository.save(postEntity);
-//        }
-//        else {
-//            log.error("Member is not found");
-//        }
-
-
-//        MemberEntity build = MemberEntity.builder().email("apdf@apdf").joinDate(LocalDateTime.now()).password("dwfa").name("aaa").build();
-//        memberRepository.save(build);
-
 
 
 
