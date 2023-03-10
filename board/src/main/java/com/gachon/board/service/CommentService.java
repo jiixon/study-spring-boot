@@ -35,12 +35,8 @@ public class CommentService {
         CommentEntity commentEntity = new CommentEntity();
         commentEntity.setComment(commentDto.getComment()); //댓글 내용 저장
         commentEntity.setCreateCommentTime(LocalDateTime.now()); //댓글 단 시간 저장
-
-        //userId
         commentEntity.setUserId(userByEmail.get()); //댓글 단 userId저장
-
-        //postId 글의 id 저장
-        commentEntity.setPostId(postById.get());
+        commentEntity.setPostId(postById.get()); //postId 글의 id 저장
 
         commentRepository.save(commentEntity);
 

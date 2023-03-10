@@ -27,7 +27,7 @@ public class DetailController {
 
     //post_user정보-user객체 안에있는 email(쓴사람)과 Oauth2user로 가져온 객체의 email(본사람) 같으면 보이게하기
 
-   @GetMapping("/detail") //글 상세조회할 때
+   @GetMapping("/detail") //글 상세조회
     public String detail(Model model, Long postId, @AuthenticationPrincipal OAuth2User oAuth2User) throws Exception {
        PostEntity postByPostId = detailService.findPostByPostId(postId);
        String userByEmail = oAuth2User.getAttribute("email").toString();

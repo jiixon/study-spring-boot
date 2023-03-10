@@ -1,5 +1,6 @@
 package com.gachon.board.service;
 
+import com.gachon.board.entity.CommentEntity;
 import com.gachon.board.entity.PostEntity;
 import com.gachon.board.repository.PostRepository;
 import lombok.Data;
@@ -24,4 +25,5 @@ public class DetailService {
 
 
     }
+    public CommentEntity fi
 }

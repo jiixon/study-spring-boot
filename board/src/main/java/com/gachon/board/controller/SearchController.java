@@ -19,7 +19,7 @@ import java.util.List;
 public class SearchController {
     private final SearchService searchService;
 
-    @GetMapping("/search")
+    @GetMapping("/search") //제목으로 글찾기
     public String showSearchList(Model model, @RequestParam String keyword, @AuthenticationPrincipal OAuth2User oAuth2User){
         List<PostEntity> contentsByTitle = searchService.getContentsByTitle(keyword);
         String name = oAuth2User.getAttribute("name").toString();

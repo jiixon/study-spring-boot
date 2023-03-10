@@ -30,12 +30,9 @@ public class PostController {
     private final PostService postService;
     private final ListService listService;
 
-
-
     @PostMapping("/save/post") // 글 저장
     public String savePost(PostDto title, @AuthenticationPrincipal OAuth2User oAuth2User){
         log.info("title: {}",title.getTitle());
-
 
         postService.savePost(title,oAuth2User.getAttribute("email").toString());
 
