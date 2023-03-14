@@ -25,5 +25,5 @@ public class DetailService {
 
 
     }
-    public CommentEntity fi
+
 }

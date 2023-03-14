@@ -118,6 +118,16 @@
         <!--comments-->
         <div class="form-group-comment">
             <h3>Comment</h3>
+            <!--댓글 조회-->
+            <div>
+                <tr th:each="comment : ${commentlist}">
+                    <td class="content" th:text="${comment.comment}">내용</td>
+                    <td class="date" th:text="${#temporals.format(comment.createCommentTime, 'yyyy-MM-dd')}">댓글 작성 시간</td>
+                    <td class="writer" th:text="${username}">작성자</td>
+                </tr>
+            </div>
+
+            <!--댓글 저장-->
             <form th:action="@{/save/comment}" method="post" enctype="application/json">
                 <input id="comment" type="text" name="comment" class="comment-text">
                 <input type="hidden" th:value="${post.id}" id="postId" name="postId">
@@ -125,10 +135,11 @@
             </form>
 
             <br><br>
-            <div class="bt_wrap_comm">
+            <div class="bt_wrap_comm" th:if="${isCommentSameUser}>
                 <button type="button">수정</button>
                 <button type="button">삭제</button>
             </div>
+
 
         </div>
 

@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,7 +40,15 @@ public class CommentService {
         commentEntity.setPostId(postById.get()); //postId 글의 id 저장
 
         commentRepository.save(commentEntity);
+    }
+    public List<CommentEntity> findCommentList(){
+        List<CommentEntity> all = commentRepository.findAll();
 
-
+        return all;
+    }
+    //댓글 작성한 userId
+    public CommentEntity findUserByCommentId(Long commentId){
+        Optional<CommentEntity> userByCommentId = commentRepository.findById(commentId);
+        return userByCommentId.get();
     }
 }

@@ -36,8 +36,8 @@ public class CommentController {
         return "redirect:/detail?postId="+commentDto.getPostId();
     }
 
-    @GetMapping("detail/comment")
-    public String detailComment(Model model, @AuthenticationPrincipal OAuth2User oAuth2User)
+//    @GetMapping("detail/comment")
+//    public String detailComment(Model model, @AuthenticationPrincipal OAuth2User oAuth2User)
 
 
 

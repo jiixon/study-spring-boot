@@ -1,8 +1,10 @@
 package com.gachon.board.controller;
 
+import com.gachon.board.entity.CommentEntity;
 import com.gachon.board.entity.MemberEntity;
 import com.gachon.board.entity.PostEntity;
 import com.gachon.board.entity.UserEntity;
+import com.gachon.board.service.CommentService;
 import com.gachon.board.service.DetailService;
 import com.gachon.board.service.MemberService;
 import com.gachon.board.service.UserService;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -24,11 +27,12 @@ import java.util.Optional;
 public class DetailController {
     private final DetailService detailService;
     private final UserService userService;
+    private final CommentService commentService;
 
     //post_user정보-user객체 안에있는 email(쓴사람)과 Oauth2user로 가져온 객체의 email(본사람) 같으면 보이게하기
 
-   @GetMapping("/detail") //글 상세조회
-    public String detail(Model model, Long postId, @AuthenticationPrincipal OAuth2User oAuth2User) throws Exception {
+   @GetMapping("/detail/{postId}") //글 상세조회
+    public String detail(Model model, @PathVariable Long postId, @AuthenticationPrincipal OAuth2User oAuth2User) throws Exception {
        PostEntity postByPostId = detailService.findPostByPostId(postId);
        String userByEmail = oAuth2User.getAttribute("email").toString();
        log.info("{}",postId);
@@ -49,7 +53,16 @@ public class DetailController {
        model.addAttribute("username",name);
        model.addAttribute("post",postByPostId);
 
-        return "detail";
+       //댓글조회
+       List<CommentEntity> commentList = commentService.findCommentList();
+       commentService.findUserByCommentId()
+       model.addAttribute("commentlist",commentList);
+       model.addAttribute("commentWriter",)
+       log.info("commentlist: {}",commentList);
+
+
+
+       return "detail";
 
     }
 }
