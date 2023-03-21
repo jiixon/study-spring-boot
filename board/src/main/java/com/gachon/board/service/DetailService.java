@@ -1,9 +1,7 @@
 package com.gachon.board.service;
 
-import com.gachon.board.entity.CommentEntity;
 import com.gachon.board.entity.PostEntity;
 import com.gachon.board.repository.PostRepository;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

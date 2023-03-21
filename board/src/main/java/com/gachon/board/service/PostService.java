@@ -1,18 +1,13 @@
 package com.gachon.board.service;
 
 import com.gachon.board.dto.PostDto;
-import com.gachon.board.entity.MemberEntity;
 import com.gachon.board.entity.PostEntity;
 import com.gachon.board.entity.UserEntity;
-import com.gachon.board.repository.MemberRepository;
 import com.gachon.board.repository.PostRepository;
 import com.gachon.board.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.Optional;
 

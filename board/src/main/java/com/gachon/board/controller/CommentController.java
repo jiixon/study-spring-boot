@@ -1,18 +1,12 @@
 package com.gachon.board.controller;
 
 import com.gachon.board.dto.CommentDto;
-import com.gachon.board.dto.PostDto;
-import com.gachon.board.entity.CommentEntity;
-import com.gachon.board.entity.PostEntity;
 import com.gachon.board.service.CommentService;
-import com.gachon.board.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -28,18 +22,11 @@ public class CommentController {
 
         String email = oAuth2User.getAttribute("email").toString();
 
-
         log.info("email: {}", email);
         log.info("postId: {}",commentDto.getPostId());
+        log.info("writerId: {}",commentDto.getWriterId());
 
         commentService.saveComment(commentDto,email);
         return "redirect:/detail?postId="+commentDto.getPostId();
     }
-
-//    @GetMapping("detail/comment")
-//    public String detailComment(Model model, @AuthenticationPrincipal OAuth2User oAuth2User)
-
-
-
-
 }

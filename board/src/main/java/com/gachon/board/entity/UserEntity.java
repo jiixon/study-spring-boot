@@ -18,16 +18,16 @@ import java.util.IdentityHashMap;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "ID")
     private Long id;
 
-    @Column
+    @Column(name = "USERNANE")
     private String username;
 
-    @Column
+    @Column(name = "EMAIL")
     private String email;
 
-    @Column
+    @Column(name = "PASSWORD")
     private String password;
 
     @Enumerated(EnumType.STRING)

@@ -16,21 +16,21 @@ import java.time.LocalDateTime;
 public class CommentEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column
+    @Column(name = "ID")
     private Long id;
 
-    @Column
+    @Column(name = "COMMENT")
     private String comment;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "POST_ID")
     private PostEntity postId;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "USER_ID")
     private UserEntity userId;
 
-    @Column
+    @Column(name = "CREATE_COMMENT_TIME")
     private LocalDateTime createCommentTime;
 
 

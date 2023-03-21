@@ -7,7 +7,6 @@ import com.gachon.board.entity.UserEntity;
 import com.gachon.board.repository.CommentRepository;
 import com.gachon.board.repository.PostRepository;
 import com.gachon.board.repository.UserRepository;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -46,9 +45,5 @@ public class CommentService {
 
         return all;
     }
-    //댓글 작성한 userId
-    public CommentEntity findUserByCommentId(Long commentId){
-        Optional<CommentEntity> userByCommentId = commentRepository.findById(commentId);
-        return userByCommentId.get();
-    }
+
 }

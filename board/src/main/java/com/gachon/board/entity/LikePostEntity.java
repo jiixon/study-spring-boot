@@ -17,15 +17,15 @@ import javax.validation.constraints.NegativeOrZero;
 public class LikePostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "ID")
     private Long id;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "USER_ID")
     private UserEntity userId;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "POST_ID")
     private PostEntity postId;
 
 }

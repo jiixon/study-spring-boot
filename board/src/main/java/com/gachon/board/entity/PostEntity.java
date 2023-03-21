@@ -19,23 +19,23 @@ public class PostEntity {
     @Column(name = "ID")
     private Long id;
 
-    @Column
+    @Column(name = "TITLE")
     private String title;
 
-    @Column
+    @Column(name = "CONTENTS")
     private String contents;
 
     @ManyToOne
-    @JoinColumn
-    private UserEntity userId; //??
+    @JoinColumn(name = "USER_ID")
+    private UserEntity userId;
 
-    @Column
+    @Column(name = "DELETE_YN")
     private Boolean deleteYn;
 
-    @Column
+    @Column(name = "DELETE_POST_TIME")
     private LocalDateTime deletePostTime;
 
-    @Column
+    @Column(name = "CREATE_POST_TIME")
     private LocalDateTime createPostTime; //Coulmn 이름(CREATE_POST_TIME)
 
 
