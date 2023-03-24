@@ -4,6 +4,7 @@ import com.gachon.board.entity.CommentEntity;
 import com.gachon.board.entity.PostEntity;
 import com.gachon.board.service.CommentService;
 import com.gachon.board.service.DetailService;
+import com.gachon.board.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,6 +12,9 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.List;
 
 @Controller
@@ -19,6 +23,7 @@ import java.util.List;
 public class DetailController {
     private final DetailService detailService;
     private final CommentService commentService;
+    private final PostService postService;
 
     //post_user정보-user객체 안에있는 email(쓴사람)과 Oauth2user로 가져온 객체의 email(본사람) 같으면 보이게하기
 
@@ -57,4 +62,17 @@ public class DetailController {
 
        return "detail";
     }
+    @GetMapping("/edit/{postId}") //페이지 수정 폼
+    public String editForm(Model model,@PathVariable("postId") Long postId) throws Exception {
+        PostEntity postByPostId = detailService.findPostByPostId(postId);
+        model.addAttribute("post",postByPostId);
+
+        return "editForm";
+
+    }
+
+//    @PostMapping("/update/{postId}") //글 수정 후 저장
+//    public String update(@PathVariable("postId") Long postId, PostEntity postEntity){
+//       postService.
+//    }
 }

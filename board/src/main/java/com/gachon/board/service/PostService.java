@@ -37,7 +37,9 @@ public class PostService {
         postEntity.setCreatePostTime(LocalDateTime.now()); //글작성 시간
         postRepository.save(postEntity);
 
-
-
     }
+//    public void detailModifiedPost(PostDto postDto){
+//
+//    }
+
 }

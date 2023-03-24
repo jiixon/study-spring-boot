@@ -33,7 +33,7 @@ tr a {
 .form-input > input::placeholder {
     color: #D2D2D2;
 }
-.form-join > button, a {
+.form-join > button {
     width: 49%;
     height: 32px;
     font-size: 15px;
@@ -66,6 +66,10 @@ tr a {
 }
 .title {
     width: 40%;
+}
+.title > a{
+    width: 40%;
+    text-decoration: none;
 }
 .date {
     width: 20%;
