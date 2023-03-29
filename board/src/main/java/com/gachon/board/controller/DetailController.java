@@ -1,5 +1,6 @@
 package com.gachon.board.controller;
 
+import com.gachon.board.dto.PostDto;
 import com.gachon.board.entity.CommentEntity;
 import com.gachon.board.entity.PostEntity;
 import com.gachon.board.service.CommentService;
@@ -63,16 +64,29 @@ public class DetailController {
        return "detail";
     }
     @GetMapping("/edit/{postId}") //페이지 수정 폼
-    public String editForm(Model model,@PathVariable("postId") Long postId) throws Exception {
+    public String editForm(Model model,@PathVariable("postId") Long postId,
+                           @AuthenticationPrincipal OAuth2User oAuth2User) throws Exception {
+        String name = oAuth2User.getAttribute("name").toString();
+        model.addAttribute("username",name);
+
         PostEntity postByPostId = detailService.findPostByPostId(postId);
         model.addAttribute("post",postByPostId);
 
         return "editForm";
-
+    }
+    @PostMapping("/update/{postId}") //글 수정 후 저장
+    public String update(@PathVariable("postId") Long postId, PostDto postDto){
+       postService.detailModifiedPost(postId,postDto);
+       return "redirect:/";
     }
 
-//    @PostMapping("/update/{postId}") //글 수정 후 저장
-//    public String update(@PathVariable("postId") Long postId, PostEntity postEntity){
-//       postService.
-//    }
+    @GetMapping("/delete/detail")
+    public String delete(Long id){
+       postService.deleteDetailPost(id);
+
+       return "redirect:/";
+    }
+
+
+
 }

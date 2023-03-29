@@ -31,15 +31,29 @@ public class PostService {
             log.error("가입되지 않는 이메일입니다");
         }
 
-        //UserId 어케해야할까,,,??
-        postEntity.setDeleteYn(true); //일단은 이렇게,,
-        postEntity.setDeletePostTime(LocalDateTime.now()); //이것도 일단 이렇게,,
+        postEntity.setDeleteYn(false);
+        postEntity.setDeletePostTime(null);
         postEntity.setCreatePostTime(LocalDateTime.now()); //글작성 시간
         postRepository.save(postEntity);
 
     }
-//    public void detailModifiedPost(PostDto postDto){
-//
-//    }
+    public void detailModifiedPost(Long postId, PostDto postDto){ //전달받은 DTO내용으로 디비에 반영
+        PostEntity find = postRepository.findById(postId).get();
+
+        find.setTitle(postDto.getTitle()); //수정된 제목 저장
+        find.setContents(postDto.getContents()); //수정된 내용 저장
+        find.setCreatePostTime(LocalDateTime.now());
+        find.setDeletePostTime(LocalDateTime.now());
+
+        postRepository.save(find);
+    }
+    public void deleteDetailPost(Long postId){ //글 삭제여부, 삭제시간 반영하는 메서드
+        PostEntity postById = postRepository.findById(postId).get();
+        postById.setDeleteYn(true); //삭제여부 true로 변경
+        postById.setDeletePostTime(LocalDateTime.now()); //글 삭제시간
+
+        postRepository.save(postById);
+
+    }
 
 }

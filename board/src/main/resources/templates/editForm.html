@@ -62,7 +62,7 @@
 </div>
 <div class="board-write">
   <h1>게시판등록</h1><br>
-  <form th:action="@{/edit/{postId}(postId=${post.id})}" method="post" enctype="application/json">
+  <form th:action="@{/update/{postId}(postId=${post.id})}" method="post" enctype="application/json">
     <div class="form-group" style="border-top: 2px solid #000">
       <label for="title">제목</label>
       <input class="form-control" type="text" id="title" name="title" placeholder="제목을 작성해주세요" th:value="${post.title}">
