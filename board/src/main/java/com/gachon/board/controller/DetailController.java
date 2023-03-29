@@ -81,8 +81,8 @@ public class DetailController {
     }
 
     @GetMapping("/delete/detail")
-    public String delete(Long id){
-       postService.deleteDetailPost(id);
+    public String delete(Long postId){ //글 삭제
+       postService.deleteDetailPost(postId);
 
        return "redirect:/";
     }

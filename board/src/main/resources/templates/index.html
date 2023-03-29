@@ -38,7 +38,7 @@
                 </tr>
                 </thead>
                 <tbody> <!--반복문-->
-                <tr  th:each="post : ${postlist}"> <!--postlist: AttributeName, 객체를 꺼내서 post에 담음-->
+                <tr  th:if="${ !#lists.isEmpty( postlist )}" th:each="post : ${postlist}"> <!--postlist: AttributeName, 객체를 꺼내서 post에 담음-->
                     <!--model안에 있는 값 꺼냄, each:List로 담아둔 모든 회원 목록을 Loop로 돌림-->
                     <td class="num" th:text="${post.id}"></td> <!--위 post의 getId()로 접근(private하기 때문)  -->
                     <td class="title"><a th:text="${post.title}" th:href="@{/detail(postId=${post.id})}"></a></td>

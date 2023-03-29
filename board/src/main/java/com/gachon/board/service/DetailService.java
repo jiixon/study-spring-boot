@@ -5,6 +5,7 @@ import com.gachon.board.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,7 +22,11 @@ public class DetailService {
             throw new Exception("not found post");
         }
 
-
     }
+    //public List<TableEntity> getTableRepositoryAllByDeleteYnLike() { // 삭제여부가 false로  된 모든 TableEntity 검색
+//    return tableRepository.findAllByDeleteYnLike(false);
+//}
+
+
 
 }

@@ -49,7 +49,9 @@ public class PostController {
         log.info("{}",oAuth2User.getAttribute("name").toString());
 
         String name = oAuth2User.getAttribute("name").toString();
-        List<PostEntity> postList = listService.findPostList();//글전체 검색 후 리스트에 저장
+        //List<PostEntity> postList = listService.findPostList();//글전체 검색 후 리스트에 저장
+        List<PostEntity> postList = listService.getPostRepositoryAllByDeleteYn(); //삭제여부False만 보이게 리스트 저장
+
         model.addAttribute("postlist",postList);
         model.addAttribute("username",name);
         return "index";

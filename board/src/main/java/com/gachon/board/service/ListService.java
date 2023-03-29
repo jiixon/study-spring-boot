@@ -17,4 +17,7 @@ public class ListService {
 
         return all;
     }
+    public List<PostEntity> getPostRepositoryAllByDeleteYn(){ // 삭제여부가 false로 된 모든 PostEntity 검색
+        return postRepository.findAllByDeleteYn(false);
+    }
 }

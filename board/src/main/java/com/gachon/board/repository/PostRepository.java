@@ -12,4 +12,6 @@ public interface PostRepository extends JpaRepository<PostEntity,Long> {
     List<PostEntity> findAllByTitleContaining(String keyword); //스프링데이터jpa쿼리메소드 규칙
     Optional<PostEntity> findById(Long postId);
 
+    List<PostEntity> findAllByDeleteYn(Boolean tf);
+
 }

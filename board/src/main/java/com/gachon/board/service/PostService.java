@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -55,5 +56,12 @@ public class PostService {
         postRepository.save(postById);
 
     }
+//    public void deletePost(Long postId){
+//        PostEntity postById = postRepository.findById(postId).get();
+//        postRepository.delete(postById);
+//    }
+
+
+
 
 }
